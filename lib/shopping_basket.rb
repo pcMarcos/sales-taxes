@@ -12,9 +12,8 @@ class ShoppingBasket
   end
 
   def add_items_from_string(input_string)
-    parser = InputParser.new
     parsed_items = parser.parse_multiple(input_string)
-    parsed_items.each { |item| @items << item }
+    parsed_items.each { |item| add_item(item) }
   end
 
   def total_tax
@@ -28,4 +27,12 @@ class ShoppingBasket
   def item_tax(item)
     @tax_calculator.calculate(item)
   end
+
+  private
+
+  def add_item(item)
+    @items << item
+  end
+
+  def parser = InputParser.new
 end
